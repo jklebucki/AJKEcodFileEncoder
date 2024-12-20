@@ -10,7 +10,8 @@ namespace AJKEcodFileEncoder.Services
         private readonly string _configFileName;
         public ConfigService()
         {
-            _appFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AJKFileTransferService");
+            _appFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "AJKFileTransferService");
+            Directory.CreateDirectory(_appFolder);
             _configFileName = "Config.json";
         }
 
