@@ -76,7 +76,7 @@ namespace FileTransferService.Services
             foreach (var view in views)
             {
                 MoveFile(view.FileName, destination);
-                _logger.LogInformation($"{DateTime.Now} File {view.FileName} moved to {destination}");
+                _logger.LogInformation($"File {view.FileName} moved to {destination}");
             }
         }
     }

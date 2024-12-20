@@ -23,7 +23,7 @@ namespace FileTransferService
             var config = await _configService.GetConfig();
             if (!config.IsValid)
             {
-                _logger.LogError($"{DateTime.Now} Invalid configuration. Using default values.\nSource folder:{_sourceFolder}\nDestination folder:{_destinationFolder}");
+                _logger.LogError($"Invalid configuration. Using default values.\nSource folder:{_sourceFolder}\nDestination folder:{_destinationFolder}");
                 return;
             }
             _destinationFolder = config.Destination;
@@ -32,18 +32,18 @@ namespace FileTransferService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            _logger.LogInformation($"{DateTime.Now} File Transfer Service is starting.");
+            _logger.LogInformation($"File Transfer Service is starting.");
 
             if (!Directory.Exists(_sourceFolder))
             {
                 Directory.CreateDirectory(_sourceFolder);
-                _logger.LogInformation($"{DateTime.Now} Source folder created: {_sourceFolder}");
+                _logger.LogInformation($"Source folder created: {_sourceFolder}");
             }
 
             if (!Directory.Exists(_destinationFolder))
             {
                 Directory.CreateDirectory(_destinationFolder);
-                _logger.LogInformation($"{DateTime.Now} Destination folder created: {_destinationFolder}");
+                _logger.LogInformation($"Destination folder created: {_destinationFolder}");
             }
 
             while (!stoppingToken.IsCancellationRequested)
@@ -52,28 +52,35 @@ namespace FileTransferService
                 {
                     var files = Directory.GetFiles(_sourceFolder, "*.txt");
                     await GetConfiguration();
-                    _transferService.TransferFiles(_sourceFolder, _destinationFolder);
+                    try
+                    {
+                        _transferService.TransferFiles(_sourceFolder, _destinationFolder);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError($"An error occurred while processing files.", ex);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError($"{DateTime.Now} An error occurred while processing files.", ex);
+                    _logger.LogError($"An error occurred while processing files.", ex);
                 }
 
                 await Task.Delay(_pollingInterval, stoppingToken);
             }
 
-            _logger.LogInformation($"{DateTime.Now} File Transfer Service is stopping.");
+            _logger.LogInformation($"File Transfer Service is stopping.");
         }
 
         public override Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"{DateTime.Now} Service is starting.");
+            _logger.LogInformation($"Service is starting.");
             return base.StartAsync(cancellationToken);
         }
 
         public override Task StopAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"{DateTime.Now} Service is stopping.");
+            _logger.LogInformation($"Service is stopping.");
             return base.StopAsync(cancellationToken);
         }
     }
