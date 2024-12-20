@@ -259,5 +259,11 @@ namespace AJKEcodFileEncoder
                 textBoxDestination.Text = folderBrowserDialog.SelectedPath;
             }
         }
+
+        private void buttonAppInfo_Click(object sender, EventArgs e)
+        {
+            // Show the app info dialog
+            new AppInfoForm().ShowDialog();
+        }
     }
 }
