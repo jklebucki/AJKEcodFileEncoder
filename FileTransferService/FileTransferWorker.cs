@@ -48,18 +48,11 @@ namespace FileTransferService
 
             while (!stoppingToken.IsCancellationRequested)
             {
+                
                 try
                 {
-                    var files = Directory.GetFiles(_sourceFolder, "*.txt");
                     await GetConfiguration();
-                    try
-                    {
-                        _transferService.TransferFiles(_sourceFolder, _destinationFolder);
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError($"An error occurred while processing files.", ex);
-                    }
+                    _transferService.TransferFiles(_sourceFolder, _destinationFolder);
                 }
                 catch (Exception ex)
                 {
