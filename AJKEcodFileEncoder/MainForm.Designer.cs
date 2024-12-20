@@ -34,6 +34,14 @@
             btnRegister = new Button();
             tableLayoutMain = new TableLayoutPanel();
             btnUnregister = new Button();
+            labelSource = new Label();
+            labelDestination = new Label();
+            textBoxSource = new TextBox();
+            textBoxDestination = new TextBox();
+            buttonSaveConfig = new Button();
+            buttonSourceFolder = new Button();
+            buttonDestinationFolder = new Button();
+            folderBrowserDialog = new FolderBrowserDialog();
             tableLayoutMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -90,6 +98,13 @@
             tableLayoutMain.Controls.Add(progressBar, 3, 3);
             tableLayoutMain.Controls.Add(lblStatus, 4, 3);
             tableLayoutMain.Controls.Add(btnUnregister, 1, 3);
+            tableLayoutMain.Controls.Add(labelSource, 0, 0);
+            tableLayoutMain.Controls.Add(labelDestination, 0, 1);
+            tableLayoutMain.Controls.Add(textBoxSource, 1, 0);
+            tableLayoutMain.Controls.Add(textBoxDestination, 1, 1);
+            tableLayoutMain.Controls.Add(buttonSaveConfig, 4, 0);
+            tableLayoutMain.Controls.Add(buttonSourceFolder, 3, 0);
+            tableLayoutMain.Controls.Add(buttonDestinationFolder, 3, 1);
             tableLayoutMain.Dock = DockStyle.Fill;
             tableLayoutMain.Location = new Point(0, 0);
             tableLayoutMain.Name = "tableLayoutMain";
@@ -111,13 +126,89 @@
             btnUnregister.Text = "Unregister service";
             btnUnregister.UseVisualStyleBackColor = true;
             // 
+            // labelSource
+            // 
+            labelSource.AutoSize = true;
+            labelSource.Dock = DockStyle.Fill;
+            labelSource.Location = new Point(8, 8);
+            labelSource.Margin = new Padding(8);
+            labelSource.Name = "labelSource";
+            labelSource.Size = new Size(154, 16);
+            labelSource.TabIndex = 5;
+            labelSource.Text = "Source directory";
+            // 
+            // labelDestination
+            // 
+            labelDestination.AutoSize = true;
+            labelDestination.Dock = DockStyle.Fill;
+            labelDestination.Location = new Point(8, 40);
+            labelDestination.Margin = new Padding(8);
+            labelDestination.Name = "labelDestination";
+            labelDestination.Size = new Size(154, 16);
+            labelDestination.TabIndex = 6;
+            labelDestination.Text = "Destination directory";
+            // 
+            // textBoxSource
+            // 
+            tableLayoutMain.SetColumnSpan(textBoxSource, 2);
+            textBoxSource.Dock = DockStyle.Fill;
+            textBoxSource.Location = new Point(173, 3);
+            textBoxSource.Name = "textBoxSource";
+            textBoxSource.Size = new Size(334, 23);
+            textBoxSource.TabIndex = 7;
+            // 
+            // textBoxDestination
+            // 
+            tableLayoutMain.SetColumnSpan(textBoxDestination, 2);
+            textBoxDestination.Dock = DockStyle.Fill;
+            textBoxDestination.Location = new Point(173, 35);
+            textBoxDestination.Name = "textBoxDestination";
+            textBoxDestination.Size = new Size(334, 23);
+            textBoxDestination.TabIndex = 8;
+            // 
+            // buttonSaveConfig
+            // 
+            buttonSaveConfig.Dock = DockStyle.Fill;
+            buttonSaveConfig.Location = new Point(683, 3);
+            buttonSaveConfig.Name = "buttonSaveConfig";
+            buttonSaveConfig.Size = new Size(168, 26);
+            buttonSaveConfig.TabIndex = 9;
+            buttonSaveConfig.Text = "Save config";
+            buttonSaveConfig.UseVisualStyleBackColor = true;
+            buttonSaveConfig.Click += buttonSaveConfig_Click;
+            // 
+            // buttonSourceFolder
+            // 
+            buttonSourceFolder.Dock = DockStyle.Fill;
+            buttonSourceFolder.Location = new Point(513, 3);
+            buttonSourceFolder.Name = "buttonSourceFolder";
+            buttonSourceFolder.Size = new Size(164, 26);
+            buttonSourceFolder.TabIndex = 10;
+            buttonSourceFolder.Text = "Select source";
+            buttonSourceFolder.UseVisualStyleBackColor = true;
+            buttonSourceFolder.Click += buttonSourceFolder_Click;
+            // 
+            // buttonDestinationFolder
+            // 
+            buttonDestinationFolder.Dock = DockStyle.Fill;
+            buttonDestinationFolder.Location = new Point(513, 35);
+            buttonDestinationFolder.Name = "buttonDestinationFolder";
+            buttonDestinationFolder.Size = new Size(164, 26);
+            buttonDestinationFolder.TabIndex = 11;
+            buttonDestinationFolder.Text = "Select destination";
+            buttonDestinationFolder.UseVisualStyleBackColor = true;
+            buttonDestinationFolder.Click += buttonDestinationFolder_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(854, 131);
             Controls.Add(tableLayoutMain);
+            MaximumSize = new Size(870, 170);
+            MinimumSize = new Size(870, 170);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AJK Ecod - file transfer";
             tableLayoutMain.ResumeLayout(false);
             tableLayoutMain.PerformLayout();
@@ -132,5 +223,13 @@
         private Button btnRegister;
         private TableLayoutPanel tableLayoutMain;
         private Button btnUnregister;
+        private Label labelSource;
+        private Label labelDestination;
+        private TextBox textBoxSource;
+        private TextBox textBoxDestination;
+        private Button buttonSaveConfig;
+        private FolderBrowserDialog folderBrowserDialog;
+        private Button buttonSourceFolder;
+        private Button buttonDestinationFolder;
     }
 }

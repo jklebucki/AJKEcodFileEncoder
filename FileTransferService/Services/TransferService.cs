@@ -3,23 +3,24 @@ using System.Text;
 
 namespace FileTransferService.Services
 {
-    internal class TransferService
+    internal class TransferService : ITransferService
     {
         private readonly OrderService _orderService;
-        public TransferService()
+        private readonly ILoggerService _logger;
+
+        public TransferService(ILoggerService logger)
         {
             _orderService = new OrderService();
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        internal IEnumerable<string> ReadFiles(string source)
+        public IEnumerable<string> ReadFiles(string source)
         {
             var files = Directory.GetFiles(source);
-
             return files.ToList();
-
         }
 
-        internal bool MoveFile(string source, string destination)
+        public bool MoveFile(string source, string destination)
         {
             try
             {
@@ -36,7 +37,7 @@ namespace FileTransferService.Services
             }
         }
 
-        internal bool SaveFileWithNewEncoding(string source, string destination, Encoding encoding)
+        public bool SaveFileWithNewEncoding(string source, string destination, Encoding encoding)
         {
             try
             {
@@ -55,7 +56,7 @@ namespace FileTransferService.Services
             }
         }
 
-        internal void TransferFiles(string source, string destination)
+        public void TransferFiles(string source, string destination)
         {
             var files = ReadFiles(source);
 
@@ -75,6 +76,7 @@ namespace FileTransferService.Services
             foreach (var view in views)
             {
                 MoveFile(view.FileName, destination);
+                _logger.LogInformation($"{DateTime.Now} File {view.FileName} moved to {destination}");
             }
         }
     }

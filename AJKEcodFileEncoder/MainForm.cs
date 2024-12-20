@@ -1,3 +1,5 @@
+using AJKEcodFileEncoder.Models;
+using AJKEcodFileEncoder.Services;
 using System.Diagnostics;
 using System.ServiceProcess;
 using Timer = System.Windows.Forms.Timer;
@@ -10,19 +12,29 @@ namespace AJKEcodFileEncoder
         private string ServicePath = Path.Combine(Directory.GetCurrentDirectory(), "FileTransferService.exe");
         //private string ServicePath = "FileTransferService.exe";
         private readonly Timer _statusCheckTimer;
+        private readonly ConfigService _configService = new ConfigService();
+        private readonly Config _config;
 
         public MainForm()
         {
             InitializeComponent();
-
+            _config = _configService.LoadConfig();
+            SetFolders();
             btnStartStop.Click += BtnStartStop_Click!;
             btnRegister.Click += BtnRegister_Click!;
+            btnUnregister.Click += BtnUnregister_Click!;
 
             _statusCheckTimer = new Timer { Interval = 5000 }; // 5 seconds interval
             _statusCheckTimer.Tick += StatusCheckTimer_Tick!;
             _statusCheckTimer.Start();
 
             UpdateServiceStatus();
+        }
+
+        private void SetFolders()
+        {
+            textBoxSource.Text = _config.Source;
+            textBoxDestination.Text = _config.Destination;
         }
 
         private void BtnStartStop_Click(object? sender, EventArgs e)
@@ -120,6 +132,57 @@ namespace AJKEcodFileEncoder
             UpdateServiceStatus();
         }
 
+        private void BtnUnregister_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                using (var serviceController = new ServiceController(ServiceName))
+                {
+                    if (ServiceExists() && serviceController.Status == ServiceControllerStatus.Stopped)
+                    {
+                        var process = new Process
+                        {
+                            StartInfo = new ProcessStartInfo
+                            {
+                                FileName = "sc.exe",
+                                Arguments = $"delete {ServiceName}",
+                                Verb = "runas",
+                                UseShellExecute = false,
+                                CreateNoWindow = true,
+                                RedirectStandardOutput = true,
+                                RedirectStandardError = true
+                            }
+                        };
+
+                        string fullCommand = $"{process.StartInfo.FileName} {process.StartInfo.Arguments}";
+                        process.Start();
+                        string output = process.StandardOutput.ReadToEnd();
+                        string error = process.StandardError.ReadToEnd();
+                        process.WaitForExit();
+
+                        if (process.ExitCode == 0)
+                        {
+                            MessageBox.Show("Service unregistered successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Failed to unregister the service. Please try again.\n{fullCommand}\n{error}\n{output}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Service is either not registered or not stopped.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            UpdateServiceStatus();
+        }
+
         private void StatusCheckTimer_Tick(object? sender, EventArgs e)
         {
             UpdateServiceStatus();
@@ -133,6 +196,8 @@ namespace AJKEcodFileEncoder
                 {
                     bool serviceExists = ServiceExists();
                     btnStartStop.Enabled = serviceExists;
+                    btnRegister.Enabled = !serviceExists;
+                    btnUnregister.Enabled = serviceExists && serviceController.Status == ServiceControllerStatus.Stopped;
 
                     progressBar.Style = serviceExists && serviceController.Status == ServiceControllerStatus.Running
                         ? ProgressBarStyle.Marquee
@@ -148,6 +213,7 @@ namespace AJKEcodFileEncoder
                 lblStatus.Text = $"Error: {ex.Message}";
                 progressBar.Style = ProgressBarStyle.Blocks;
                 btnStartStop.Enabled = false;
+                btnUnregister.Enabled = false;
             }
         }
 
@@ -164,6 +230,33 @@ namespace AJKEcodFileEncoder
             catch
             {
                 return false;
+            }
+        }
+
+        private void buttonSaveConfig_Click(object sender, EventArgs e)
+        {
+            _configService.SaveConfig(new Config
+            {
+                Source = textBoxSource.Text,
+                Destination = textBoxDestination.Text
+            });
+        }
+
+        private void buttonSourceFolder_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.SelectedPath = textBoxSource.Text;
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxSource.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
+
+        private void buttonDestinationFolder_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.SelectedPath = textBoxDestination.Text;
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxDestination.Text = folderBrowserDialog.SelectedPath;
             }
         }
     }
