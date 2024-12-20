@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AJKEcodFileEncoder", "AJKEcodFileEncoder\AJKEcodFileEncoder.csproj", "{4478B0C5-C695-4B75-A6FA-6E57960CA77C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileTransferService", "FileTransferService\FileTransferService.csproj", "{2E54ACC5-DBBD-46F6-8EDD-4BC6FC5845C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4478B0C5-C695-4B75-A6FA-6E57960CA77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4478B0C5-C695-4B75-A6FA-6E57960CA77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4478B0C5-C695-4B75-A6FA-6E57960CA77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4478B0C5-C695-4B75-A6FA-6E57960CA77C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E54ACC5-DBBD-46F6-8EDD-4BC6FC5845C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E54ACC5-DBBD-46F6-8EDD-4BC6FC5845C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E54ACC5-DBBD-46F6-8EDD-4BC6FC5845C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E54ACC5-DBBD-46F6-8EDD-4BC6FC5845C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
