@@ -49,10 +49,9 @@
             // btnStartStop
             // 
             btnStartStop.Dock = DockStyle.Fill;
-            btnStartStop.Location = new Point(391, 127);
-            btnStartStop.Margin = new Padding(3, 4, 3, 4);
+            btnStartStop.Location = new Point(343, 99);
             btnStartStop.Name = "btnStartStop";
-            btnStartStop.Size = new Size(188, 33);
+            btnStartStop.Size = new Size(164, 27);
             btnStartStop.TabIndex = 0;
             btnStartStop.Text = "Start / Stop";
             btnStartStop.UseVisualStyleBackColor = true;
@@ -60,20 +59,19 @@
             // progressBar
             // 
             progressBar.Dock = DockStyle.Fill;
-            progressBar.Location = new Point(585, 127);
-            progressBar.Margin = new Padding(3, 4, 3, 4);
+            progressBar.Location = new Point(513, 99);
             progressBar.Name = "progressBar";
-            progressBar.Size = new Size(188, 33);
+            progressBar.Size = new Size(164, 27);
             progressBar.TabIndex = 1;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
             lblStatus.Dock = DockStyle.Fill;
-            lblStatus.Location = new Point(783, 131);
-            lblStatus.Margin = new Padding(7, 8, 7, 8);
+            lblStatus.Location = new Point(686, 102);
+            lblStatus.Margin = new Padding(6);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(184, 25);
+            lblStatus.Size = new Size(162, 21);
             lblStatus.TabIndex = 2;
             lblStatus.Text = "Status...";
             lblStatus.TextAlign = ContentAlignment.MiddleCenter;
@@ -81,10 +79,9 @@
             // btnRegister
             // 
             btnRegister.Dock = DockStyle.Fill;
-            btnRegister.Location = new Point(3, 127);
-            btnRegister.Margin = new Padding(3, 4, 3, 4);
+            btnRegister.Location = new Point(3, 99);
             btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(188, 33);
+            btnRegister.Size = new Size(164, 27);
             btnRegister.TabIndex = 3;
             btnRegister.Text = "Register service";
             btnRegister.UseVisualStyleBackColor = true;
@@ -112,23 +109,21 @@
             tableLayoutMain.Controls.Add(buttonAppInfo, 4, 1);
             tableLayoutMain.Dock = DockStyle.Fill;
             tableLayoutMain.Location = new Point(0, 0);
-            tableLayoutMain.Margin = new Padding(3, 4, 3, 4);
             tableLayoutMain.Name = "tableLayoutMain";
             tableLayoutMain.RowCount = 4;
             tableLayoutMain.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutMain.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutMain.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutMain.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutMain.Size = new Size(974, 164);
+            tableLayoutMain.Size = new Size(854, 129);
             tableLayoutMain.TabIndex = 4;
             // 
             // btnUnregister
             // 
             btnUnregister.Dock = DockStyle.Fill;
-            btnUnregister.Location = new Point(197, 127);
-            btnUnregister.Margin = new Padding(3, 4, 3, 4);
+            btnUnregister.Location = new Point(173, 99);
             btnUnregister.Name = "btnUnregister";
-            btnUnregister.Size = new Size(188, 33);
+            btnUnregister.Size = new Size(164, 27);
             btnUnregister.TabIndex = 4;
             btnUnregister.Text = "Unregister service";
             btnUnregister.UseVisualStyleBackColor = true;
@@ -137,10 +132,10 @@
             // 
             labelSource.AutoSize = true;
             labelSource.Dock = DockStyle.Fill;
-            labelSource.Location = new Point(9, 11);
-            labelSource.Margin = new Padding(9, 11, 9, 11);
+            labelSource.Location = new Point(8, 8);
+            labelSource.Margin = new Padding(8);
             labelSource.Name = "labelSource";
-            labelSource.Size = new Size(176, 19);
+            labelSource.Size = new Size(154, 16);
             labelSource.TabIndex = 5;
             labelSource.Text = "Source directory";
             // 
@@ -148,10 +143,10 @@
             // 
             labelDestination.AutoSize = true;
             labelDestination.Dock = DockStyle.Fill;
-            labelDestination.Location = new Point(9, 52);
-            labelDestination.Margin = new Padding(9, 11, 9, 11);
+            labelDestination.Location = new Point(8, 40);
+            labelDestination.Margin = new Padding(8);
             labelDestination.Name = "labelDestination";
-            labelDestination.Size = new Size(176, 19);
+            labelDestination.Size = new Size(154, 16);
             labelDestination.TabIndex = 6;
             labelDestination.Text = "Destination directory";
             // 
@@ -159,29 +154,26 @@
             // 
             tableLayoutMain.SetColumnSpan(textBoxSource, 2);
             textBoxSource.Dock = DockStyle.Fill;
-            textBoxSource.Location = new Point(197, 4);
-            textBoxSource.Margin = new Padding(3, 4, 3, 4);
+            textBoxSource.Location = new Point(173, 3);
             textBoxSource.Name = "textBoxSource";
-            textBoxSource.Size = new Size(382, 27);
+            textBoxSource.Size = new Size(334, 23);
             textBoxSource.TabIndex = 7;
             // 
             // textBoxDestination
             // 
             tableLayoutMain.SetColumnSpan(textBoxDestination, 2);
             textBoxDestination.Dock = DockStyle.Fill;
-            textBoxDestination.Location = new Point(197, 45);
-            textBoxDestination.Margin = new Padding(3, 4, 3, 4);
+            textBoxDestination.Location = new Point(173, 35);
             textBoxDestination.Name = "textBoxDestination";
-            textBoxDestination.Size = new Size(382, 27);
+            textBoxDestination.Size = new Size(334, 23);
             textBoxDestination.TabIndex = 8;
             // 
             // buttonSaveConfig
             // 
             buttonSaveConfig.Dock = DockStyle.Fill;
-            buttonSaveConfig.Location = new Point(779, 4);
-            buttonSaveConfig.Margin = new Padding(3, 4, 3, 4);
+            buttonSaveConfig.Location = new Point(683, 3);
             buttonSaveConfig.Name = "buttonSaveConfig";
-            buttonSaveConfig.Size = new Size(192, 33);
+            buttonSaveConfig.Size = new Size(168, 26);
             buttonSaveConfig.TabIndex = 9;
             buttonSaveConfig.Text = "Save config";
             buttonSaveConfig.UseVisualStyleBackColor = true;
@@ -190,10 +182,9 @@
             // buttonSourceFolder
             // 
             buttonSourceFolder.Dock = DockStyle.Fill;
-            buttonSourceFolder.Location = new Point(585, 4);
-            buttonSourceFolder.Margin = new Padding(3, 4, 3, 4);
+            buttonSourceFolder.Location = new Point(513, 3);
             buttonSourceFolder.Name = "buttonSourceFolder";
-            buttonSourceFolder.Size = new Size(188, 33);
+            buttonSourceFolder.Size = new Size(164, 26);
             buttonSourceFolder.TabIndex = 10;
             buttonSourceFolder.Text = "Select source";
             buttonSourceFolder.UseVisualStyleBackColor = true;
@@ -202,10 +193,9 @@
             // buttonDestinationFolder
             // 
             buttonDestinationFolder.Dock = DockStyle.Fill;
-            buttonDestinationFolder.Location = new Point(585, 45);
-            buttonDestinationFolder.Margin = new Padding(3, 4, 3, 4);
+            buttonDestinationFolder.Location = new Point(513, 35);
             buttonDestinationFolder.Name = "buttonDestinationFolder";
-            buttonDestinationFolder.Size = new Size(188, 33);
+            buttonDestinationFolder.Size = new Size(164, 26);
             buttonDestinationFolder.TabIndex = 11;
             buttonDestinationFolder.Text = "Select destination";
             buttonDestinationFolder.UseVisualStyleBackColor = true;
@@ -215,9 +205,10 @@
             // 
             buttonAppInfo.BackColor = Color.MediumSpringGreen;
             buttonAppInfo.Dock = DockStyle.Fill;
-            buttonAppInfo.Location = new Point(779, 44);
+            buttonAppInfo.Location = new Point(683, 34);
+            buttonAppInfo.Margin = new Padding(3, 2, 3, 2);
             buttonAppInfo.Name = "buttonAppInfo";
-            buttonAppInfo.Size = new Size(192, 35);
+            buttonAppInfo.Size = new Size(168, 28);
             buttonAppInfo.TabIndex = 12;
             buttonAppInfo.Text = "App info";
             buttonAppInfo.UseVisualStyleBackColor = false;
@@ -225,13 +216,12 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(974, 164);
+            ClientSize = new Size(854, 129);
             Controls.Add(tableLayoutMain);
-            Margin = new Padding(3, 4, 3, 4);
-            MaximumSize = new Size(992, 211);
-            MinimumSize = new Size(992, 211);
+            MaximumSize = new Size(870, 168);
+            MinimumSize = new Size(870, 168);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AJK Ecod - file transfer";

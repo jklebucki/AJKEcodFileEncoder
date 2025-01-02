@@ -235,11 +235,18 @@ namespace AJKEcodFileEncoder
 
         private void buttonSaveConfig_Click(object sender, EventArgs e)
         {
-            _configService.SaveConfig(new Config
+            try
             {
-                Source = textBoxSource.Text,
-                Destination = textBoxDestination.Text
-            });
+                _configService.SaveConfig(new Config
+                {
+                    Source = textBoxSource.Text,
+                    Destination = textBoxDestination.Text
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonSourceFolder_Click(object sender, EventArgs e)

@@ -35,20 +35,22 @@
             // 
             richTextBoxAppInfo.Dock = DockStyle.Fill;
             richTextBoxAppInfo.Location = new Point(0, 0);
-            richTextBoxAppInfo.MaximumSize = new Size(801, 223);
-            richTextBoxAppInfo.MinimumSize = new Size(801, 223);
+            richTextBoxAppInfo.Margin = new Padding(3, 2, 3, 2);
+            richTextBoxAppInfo.MaximumSize = new Size(701, 168);
+            richTextBoxAppInfo.MinimumSize = new Size(701, 168);
             richTextBoxAppInfo.Name = "richTextBoxAppInfo";
             richTextBoxAppInfo.ReadOnly = true;
-            richTextBoxAppInfo.Size = new Size(801, 223);
+            richTextBoxAppInfo.Size = new Size(701, 168);
             richTextBoxAppInfo.TabIndex = 0;
             richTextBoxAppInfo.Text = "";
             // 
             // AppInfoForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(801, 223);
+            ClientSize = new Size(701, 167);
             Controls.Add(richTextBoxAppInfo);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AppInfoForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Application informations";
